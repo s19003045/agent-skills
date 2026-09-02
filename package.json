@@ -1,0 +1,17 @@
+{
+  "name": "agent-skills",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "可同時用於 Claude Code 與 Codex 的 skill 集合",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "sync": "node scripts/sync-plugin.mjs",
+    "sync:check": "node scripts/sync-plugin.mjs --check",
+    "test": "node scripts/test-skills.mjs",
+    "check": "npm run validate && npm run sync:check && npm run test"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.9"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "skill_name": "gas-sheets-app",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我們社團有大概 40 個人，每次活動都要點名，現在是用 line 接龍很亂。我想做一個網頁讓大家用 google 帳號登入自己簽到，幹部可以看誰沒來。我不太會寫程式但可以照著做。不想花錢租主機",
+      "expected_output": "選擇 Google Sheets + Apps Script 架構；說明為什麼不能純前端直連；提供可跑的骨架與逐步部署流程",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我用 google sheet 存客戶資料，想做一個網頁讓業務可以查自己負責的客戶，但不能看到別人的。我打算直接用 sheets api 在前端讀寫，這樣可行嗎",
+      "expected_output": "明確指出純前端直連無法做到列級權限隔離，並解釋 Google 權限是檔案級的；提出 Apps Script 作為信任邊界",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "我的 apps script web app 部署好了，用瀏覽器開 /exec 有回應，但前端 fetch 一直失敗，chrome console 說 CORS 錯誤。code 我貼在下面：fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)})",
+      "expected_output": "指出 Apps Script 不回應 preflight，必須改用 Content-Type: text/plain 送 JSON 字串",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "幫我看一下這個錯誤 Exception: Specified permissions are not sufficient to call Session.getEffectiveUser. 我的 appsscript.json 裡面 oauthScopes 有 spreadsheets 跟 drive 了啊",
+      "expected_output": "指出明確宣告 oauthScopes 會關閉自動偵測，缺少 userinfo.email；並提醒此例外會中斷後續步驟",
+      "files": []
+    }
+  ]
+}

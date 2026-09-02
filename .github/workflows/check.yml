@@ -1,0 +1,30 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - run: npm install
+
+      # 結構：frontmatter、引用的檔案、憑證外洩、Codex 相容性
+      - name: 驗證結構
+        run: npm run validate
+
+      # plugins/ 底下的副本是由 skills/ 同步而來，不同步就擋下
+      - name: 檢查 plugin 副本是否同步
+        run: npm run sync:check
+
+      # 照 SKILL.md 的步驟把骨架組起來實際跑一遍 —— 這是唯一擋得住腐化的檢查
+      - name: 跑各 skill 的冒煙測試
+        run: npm test

@@ -1,0 +1,18 @@
+{
+  "name": "gary-skills",
+  "description": "Gary Wu 的 agent skill 集合。每一份都來自實際做完並部署過的專案，內容以「文件查不到、只能自己踩」的知識為主。同一份 skill 可用於 Claude Code 與 Codex。",
+  "owner": {
+    "name": "Gary Wu",
+    "url": "https://github.com/s19003045"
+  },
+  "plugins": [
+    {
+      "name": "gary-toolkit",
+      "description": "用 Google 試算表當資料庫、Google 帳號登入、不架後端做出有權限控管的網頁應用。含可直接跑的程式骨架、本機測試工具，以及帶不會寫程式的人完成部署的流程。",
+      "source": "./plugins/gary-toolkit",
+      "category": "development",
+      "author": { "name": "Gary Wu" },
+      "homepage": "https://github.com/s19003045/agent-skills"
+    }
+  ]
+}
