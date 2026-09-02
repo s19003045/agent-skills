@@ -22,7 +22,7 @@
 ```
 
 ```bash
-/plugin install gary-toolkit@gary-skills
+/plugin install gary-toolkit@agent-skills
 ```
 
 ### Codex
