@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "gary-toolkit",
-      "description": "用 Google 試算表當資料庫、Google 帳號登入、不架後端做出有權限控管的網頁應用。含可直接跑的程式骨架、本機測試工具，以及帶不會寫程式的人完成部署的流程。",
+      "description": "實戰踩出來的開發 skill：用 Google 試算表當資料庫、不架後端做出有權限控管的網頁應用（含骨架、測試工具與部署流程）；讓 Codex 與 Claude Code 共用一份完整讀得到的專案說明書（含檢查與實測腳本）。",
       "source": "./plugins/gary-toolkit",
       "category": "development",
       "author": {

@@ -10,6 +10,7 @@
 | Skill | 做什麼 | 來源 |
 |---|---|---|
 | [`gas-sheets-app`](skills/gas-sheets-app) | 用 Google 試算表當資料庫、Google 帳號登入、不架後端做出有權限控管的網頁應用。含可直接跑的骨架、本機測試工具、部署流程 | 一個實際開發並部署完成的課程管理系統 |
+| [`shared-agent-instructions`](skills/shared-agent-instructions) | 讓一份專案說明書同時被 Codex（AGENTS.md）與 Claude Code（CLAUDE.md）完整讀到：符號連結在 Windows 變成一行字、Codex 只讀前 32 KiB 且無聲截斷、Codex 不讀 CLAUDE.md。含靜態檢查與「看 Codex 實際收到什麼」的腳本 | 一個要交接給 Windows + Codex 團隊的平台專案 |
 
 ---
 
@@ -32,6 +33,7 @@
 ```bash
 git clone https://github.com/s19003045/agent-skills.git /tmp/agent-skills
 cp -r /tmp/agent-skills/skills/gas-sheets-app ~/.codex/skills/
+cp -r /tmp/agent-skills/skills/shared-agent-instructions ~/.codex/skills/
 ```
 
 也可以請 Codex 用內建的 `skill-installer` 從這個 repo 的 `skills` 路徑安裝。
@@ -63,7 +65,8 @@ description 打錯導致永遠不被觸發。這些都不會有人主動發現�
 
 **2. 附可執行的驗證。** 光有文字沒有用。`gas-sheets-app` 附了 `smoke.test.js`，
 CI 會照 `SKILL.md` 教的步驟把骨架實際組起來跑一遍。
-撰寫時就是靠這個驗證當場抓到兩個 bug。
+撰寫時就是靠這個驗證當場抓到兩個 bug。`shared-agent-instructions` 的檢查腳本附 `scripts/*.test.mjs`，
+用真的 git repo 重現每一種壞法；寫的時候也抓到腳本自己的一個 bug。
 
 **3. description 要寫明觸發情境。** 它是唯一決定「會不會在對的時機被想起來」的欄位。
 內容再好，不觸發就等於不存在。CI 會擋掉太短的 description。
@@ -85,7 +88,7 @@ npm run check
 |---|---|
 | `npm run validate` | frontmatter、name 與目錄一致、description 長度、內文引用的檔案存在、無憑證外洩、無 Claude 專屬路徑 |
 | `npm run sync:check` | `plugins/` 底下的副本與 `skills/` 一致 |
-| `npm test` | 照 SKILL.md 的步驟組裝骨架並實際跑測試 |
+| `npm test` | 照 SKILL.md 的步驟組裝骨架並實際跑測試；skill 的 `scripts/*.test.mjs` 用 `node --test` 跑 |
 
 ### 目錄結構
 

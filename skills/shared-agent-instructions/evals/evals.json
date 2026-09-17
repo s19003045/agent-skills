@@ -1,0 +1,29 @@
+{
+  "skill_name": "shared-agent-instructions",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我們 repo 已經有 CLAUDE.md 了，同事想用 Codex。我打算 ln -s CLAUDE.md AGENTS.md 這樣兩邊都讀得到，你幫我做一下",
+      "expected_output": "指出 Windows 上 git 預設不建立符號連結，簽出後 AGENTS.md 只剩檔名；改用 AGENTS.md 正本加上只有 @AGENTS.md 的 CLAUDE.md，並提供換法與檢查腳本",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我的 AGENTS.md 大概寫了一萬五千字，最後面有一段部署前一定要跑測試的規則，可是 Codex 常常不照做，前面的規則倒是都有遵守",
+      "expected_output": "指出 Codex 只讀前 32 KiB 且無聲截斷；建議把重要規則移到前面、長內容移出說明書；用 codex-sees.mjs 確認實際讀到哪裡",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "monorepo 根目錄有 AGENTS.md，我想在 apps/web 底下再放一份前端專用的 AGENTS.md，有什麼要注意的嗎",
+      "expected_output": "說明從子目錄啟動時兩份共用同一個 32 KiB 額度，被截斷的是子目錄那份；建議把兩份合計控制在上限內並用腳本檢查",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "這個專案要交接給另一個團隊，他們用 Windows 跟 Codex，我們一直是用 Mac 跟 Claude Code 開發的。專案說明需要怎麼處理才能確定他們的 agent 讀得到",
+      "expected_output": "檢查是否有符號連結與 CLAUDE.md-only 的情況，建議 AGENTS.md 正本、CLAUDE.md 引用、控制大小，並用 core.symlinks=false 簽出後跑兩支腳本驗證",
+      "files": []
+    }
+  ]
+}
